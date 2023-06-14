@@ -1,4 +1,5 @@
 import TodoItem from "@/components/TodoItem";
+import PropTypes from 'prop-types';
 
 const TodosList = ({ todosProps, handleChange, delTodo, setUpdate }) => {
   return (
@@ -15,5 +16,18 @@ const TodosList = ({ todosProps, handleChange, delTodo, setUpdate }) => {
     </ul>
   );
 }
+
+TodosList.propTypes = {
+  todosProps: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
  
 export default TodosList;
